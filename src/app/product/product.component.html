@@ -1,0 +1,22 @@
+<h3 *ngIf="product; else noProduct">{{ title }}</h3>
+
+
+<div class="row">
+  <ng-template #noProduct>
+    <div class="alert alert-danger" role="alert">
+    Ürünlerimiz tükenmiştir. Lütfen stock yenilenene kadar bekleyiniz.
+    </div>
+  </ng-template>
+  <div *ngFor= "let p of product " class="card" style="width: 18rem">
+    <img [src]="p.imageURL" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{p.name}} {{p.price | currency:'TRY' : true }} </h5>
+      <p class="card-text">
+
+        {{p.definition | uppercase}}
+      </p>
+      <a (click) = "addToCart(p)" class="btn btn-primary">Sepete ekle</a>
+    </div>
+  </div>
+
+</div>
